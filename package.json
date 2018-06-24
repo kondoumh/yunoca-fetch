@@ -4,7 +4,7 @@
   "description": "scraping tool for yunoca(Yamaguchi University Academic Repository)",
   "main": "main.js",
   "scripts": {
-    "start": "node main.json > work/yunoca.txt",
+    "start": "node main.js html > work/yunoca-test.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
