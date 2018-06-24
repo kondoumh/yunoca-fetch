@@ -1,0 +1,29 @@
+{
+  "name": "yunoca-fetch",
+  "version": "0.0.1",
+  "description": "scraping tool for yunoca(Yamaguchi University Academic Repository)",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.json > work/yunoca.txt",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kondoumh/yunoca-fetch.git"
+  },
+  "keywords": [
+    "scraping"
+  ],
+  "author": "kondoumh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kondoumh/yunoca-fetch/issues"
+  },
+  "homepage": "https://github.com/kondoumh/yunoca-fetch#readme",
+  "dependencies": {
+    "cheerio-httpcli": "^0.7.3",
+    "config": "^1.30.0",
+    "nodemailer": "^4.6.7",
+    "underscore": "^1.9.1"
+  }
+}
