@@ -43,3 +43,6 @@ production.json
 
 # work output
 yunoca-*
+
+# platform dependent folders
+.DS_Store
