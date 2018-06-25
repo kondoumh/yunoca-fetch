@@ -28,6 +28,8 @@ p.then(function(result) {
   let html =
     '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>yunoca</title></head></body>';
   html += "<table><tr><th>title</th><th>accesses</th><th>downloads</th><tr>";
+  let results = [];
+
   result.$("dd").each(function() {
     // アクセス情報取得
     const dd = result.$(this).text();
@@ -44,6 +46,12 @@ p.then(function(result) {
     if (arg == "txt") {
       console.log(line);
     }
+    const result = {
+      title: elm[0],
+      accesses: elm[1],
+      dounloads: elm[2]
+    };
+    results.push(result);
     body += line + "\n";
     html +=
       "<tr><td>" +
@@ -56,6 +64,9 @@ p.then(function(result) {
   });
   html += "</table></body></html>";
 
+  if (arg == "json") {
+    console.log(JSON.stringify(results, null, 2));
+  }
   if (arg == "html") {
     console.log(html);
   }
