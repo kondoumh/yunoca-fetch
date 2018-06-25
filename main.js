@@ -78,7 +78,8 @@ p.then(function(result) {
     output(`work/${fileName}.json`, JSON.stringify(entries, null, 2));
   }
   if (arg == "html") {
-    output(`work/${fileName}.html`, html);
+    const pretty = require("pretty");
+    output(`work/${fileName}.html`, pretty(html));
   }
 });
 
