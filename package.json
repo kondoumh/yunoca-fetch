@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "node main.js txt > work/yunoca-test.txt",
+    "html": "node main.js html > work/yunoca-test.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
