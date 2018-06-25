@@ -1,5 +1,8 @@
 const client = require("cheerio-httpcli");
 const _ = require("underscore");
+const moment = require("moment");
+const fs = require("fs");
+const nodemailer = require("nodemailer");
 
 const p = client.fetch(
   "http://petit.lib.yamaguchi-u.ac.jp/G0000006y2j2/ListByFieldDetail.e?sort=r:dateofissued&fieldName=creator_transcription&id=%E3%82%B3%E3%83%B3%E3%83%89%E3%82%A6%2C+%E3%82%BF%E3%82%AB%E3%82%A4%E3%83%81"
@@ -7,7 +10,11 @@ const p = client.fetch(
 
 const arg = process.argv[2];
 
-const nodemailer = require("nodemailer");
+const output = (path, data) => {
+  fs.writeFile(path, data, (err) => {
+    if (err) { throw err; }
+  });
+};
 
 p.then(function(result) {
   const titles = [];
@@ -25,10 +32,11 @@ p.then(function(result) {
   let downloads = [];
   let line = "";
   let body = "";
+  let csv = ""
+  let entries = [];
   let html =
     '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>yunoca</title></head></body>';
   html += "<table><tr><th>title</th><th>accesses</th><th>downloads</th><tr>";
-  let results = [];
 
   result.$("dd").each(function() {
     // アクセス情報取得
@@ -42,16 +50,14 @@ p.then(function(result) {
     }
   });
   _.chain(_.zip(titles, accesses, downloads)).each(function(elm) {
-    line = elm[0] + "," + elm[1] + "," + elm[2];
-    if (arg == "txt") {
-      console.log(line);
-    }
-    const result = {
+    line = elm[0] + "," + elm[1] + "," + elm[2] + "\n";
+    csv += line + ""
+    const entry = {
       title: elm[0],
       accesses: elm[1],
       dounloads: elm[2]
     };
-    results.push(result);
+    entries.push(entry);
     body += line + "\n";
     html +=
       "<tr><td>" +
@@ -64,11 +70,15 @@ p.then(function(result) {
   });
   html += "</table></body></html>";
 
+  const fileName = "yunoca-" + moment().format("YYYYMMDDHHmmss");
+  if (arg == "csv") {
+    output(`work/${fileName}.csv`, csv);
+  }
   if (arg == "json") {
-    console.log(JSON.stringify(results, null, 2));
+    output(`work/${fileName}.json`, JSON.stringify(entries, null, 2));
   }
   if (arg == "html") {
-    console.log(html);
+    output(`work/${fileName}.html`, html);
   }
 });
 
