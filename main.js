@@ -88,5 +88,5 @@ p.catch(function(err) {
 });
 
 p.finally(function() {
-
+  console.log("finished.");
 });
