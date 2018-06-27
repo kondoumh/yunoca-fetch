@@ -6,7 +6,6 @@
         "from": "from@mail.address",
         "to": "to@mail.address",
         "subject": "yunoca",
-        "text": "",
         "transport": ""
     }
 }

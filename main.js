@@ -85,6 +85,21 @@ p.then(function(result) {
     const pretty = require("pretty");
     output(`work/${fileName}.html`, pretty(html));
   }
+  if (arg == "mail") {
+    const transporter = nodemailer.createTransport(config.get("Mail.transport"));
+    var mailOptions = {
+        from: config.get("Mail.from"),
+        to: config.get("Mail.to"),
+        subject: config.get("Mail.subject"),
+        text: csv
+    };
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+    });
+  }
 });
 
 p.catch(function(err) {
