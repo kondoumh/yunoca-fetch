@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "node main.js csv",
+    "production": "NODE_ENV=production node main.js csv",
     "json": "node main.js json",
     "html": "node main.js html",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,6 +26,7 @@
   "dependencies": {
     "cheerio-httpcli": "^0.7.3",
     "config": "^1.30.0",
+    "encodeurl": "^1.0.2",
     "moment": "^2.22.2",
     "nodemailer": "^4.6.7",
     "pretty": "^2.0.0",

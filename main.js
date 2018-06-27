@@ -3,10 +3,13 @@ const _ = require("underscore");
 const moment = require("moment");
 const fs = require("fs");
 const nodemailer = require("nodemailer");
+const config = require("config");
+const encodeUrl = require("encodeurl");
 
-const p = client.fetch(
-  "http://petit.lib.yamaguchi-u.ac.jp/G0000006y2j2/ListByFieldDetail.e?sort=r:dateofissued&fieldName=creator_transcription&id=%E3%82%B3%E3%83%B3%E3%83%89%E3%82%A6%2C+%E3%82%BF%E3%82%AB%E3%82%A4%E3%83%81"
-);
+const creator = config.get("Issue.creator");
+const query = `http://petit.lib.yamaguchi-u.ac.jp/G0000006y2j2/ListByFieldDetail.e?sort=r:dateofissued&fieldName=creator_transcription&id=${encodeUrl(creator)}`;
+
+const p = client.fetch(query);
 
 const arg = process.argv[2];
 const arg2 = process.argv[3];
