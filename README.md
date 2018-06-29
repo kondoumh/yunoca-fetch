@@ -18,7 +18,8 @@ Edit production.json.
         "subject": "yunoca",
         "transport": "your_smtp_transport_setting"
     }
-}```
+}
+```
 
 Set target creater name in Japanese katakana divided '%2c+' to ```Issue.creator```.
 
