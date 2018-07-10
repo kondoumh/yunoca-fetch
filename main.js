@@ -73,8 +73,8 @@ p.then(function(result) {
       "</td></tr>";
   });
   html += "</table></body></html>";
-
-  const fileName = "yunoca-" + moment().format("YYYYMMDDHHmmss");
+  const dateStr = moment().format("YYYYMMDDHHmmss");
+  const fileName = "yunoca-" + dateStr;
   if (arg == "csv") {
     output(`work/${fileName}.csv`, csv);
   }
@@ -86,11 +86,12 @@ p.then(function(result) {
     output(`work/${fileName}.html`, pretty(html));
   }
   if (arg == "mail") {
+    const date = moment.Format
     const transporter = nodemailer.createTransport(config.get("Mail.transport"));
     var mailOptions = {
         from: config.get("Mail.from"),
         to: config.get("Mail.to"),
-        subject: config.get("Mail.subject"),
+        subject: config.get("Mail.subject") + " " + dateStr,
         text: csv
     };
     transporter.sendMail(mailOptions, function(error, info) {
