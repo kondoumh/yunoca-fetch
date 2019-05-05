@@ -4,11 +4,14 @@
   "description": "scraping tool for yunoca(Yamaguchi University Academic Repository)",
   "main": "main.js",
   "scripts": {
-    "start": "NODE_ENV=production node main.js csv",
+    "csv": "NODE_ENV=production node main.js csv",
     "json": "NODE_ENV=production node main.js json",
     "html": "NODE_ENV=production node main.js html",
     "mail": "NODE_ENV=production node main.js mail",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "csv_w": "set NODE_ENV=production&&node main.js csv",
+    "json_w": "set NODE_ENV=production&&node main.js json",
+    "html_w": "set NODE_ENV=production&&node main.js html",
+    "mail_w": "set NODE_ENV=production&&node main.js mail"
   },
   "repository": {
     "type": "git",

@@ -86,7 +86,6 @@ p.then(function(result) {
     output(`work/${fileName}.html`, pretty(html));
   }
   if (arg == "mail") {
-    const date = moment.Format
     const transporter = nodemailer.createTransport(config.get("Mail.transport"));
     var mailOptions = {
         from: config.get("Mail.from"),
@@ -96,7 +95,7 @@ p.then(function(result) {
     };
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
-            return console.log(error);
+            console.error(error);
         }
         console.log('Message sent: ' + info.response);
     });
@@ -104,7 +103,7 @@ p.then(function(result) {
 });
 
 p.catch(function(err) {
-  console.log(err);
+  console.error(err);
 });
 
 p.finally(function() {
