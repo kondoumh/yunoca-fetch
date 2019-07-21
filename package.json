@@ -28,10 +28,10 @@
   "homepage": "https://github.com/kondoumh/yunoca-fetch#readme",
   "dependencies": {
     "cheerio-httpcli": "^0.7.4",
-    "config": "^3.1.0",
+    "config": "^3.2.2",
     "encodeurl": "^1.0.2",
     "moment": "^2.24.0",
-    "nodemailer": "^6.1.1",
+    "nodemailer": "^6.3.0",
     "pretty": "^2.0.0",
     "underscore": "^1.9.1"
   }
