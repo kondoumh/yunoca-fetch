@@ -31,7 +31,7 @@
     "config": "^3.2.2",
     "encodeurl": "^1.0.2",
     "moment": "^2.24.0",
-    "nodemailer": "^6.4.16",
+    "nodemailer": "^6.6.1",
     "pretty": "^2.0.0",
     "underscore": "^1.12.1"
   }
